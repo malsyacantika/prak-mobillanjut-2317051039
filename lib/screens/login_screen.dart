@@ -1,10 +1,10 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
+import 'dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const route = '/signin';
+  static const route = '/login';
   const LoginScreen({super.key});
 
   @override
@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // Komponen kecil buat label + tanda *
   Widget requiredLabel(String text) => Row(
         children: [
           Text(text, style: const TextStyle(fontSize: 13)),
@@ -30,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       );
 
-  // Tombol biru dengan gradient (UI-only)
   Widget primaryButton(String label, VoidCallback onTap) => GestureDetector(
         onTap: onTap,
         child: Container(
@@ -40,10 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             gradient: const LinearGradient(
-              colors: [
-                Color(0xFF1E88FF),
-                Color(0xFF207DFF),
-              ],
+              colors: [Color(0xFF1E88FF), Color(0xFF207DFF)],
             ),
             boxShadow: [
               BoxShadow(
@@ -71,15 +66,12 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(height: 18),
-              // Logo
               Image.asset(
-                'assets/images/JustDuit.png',
+                'assets/JustDuit.png',
                 height: 80,
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 18),
-
-              // Judul
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Align(
@@ -94,8 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 14),
-
-              // Card form
               Container(
                 width: 360,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -124,7 +114,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 14),
-
                     requiredLabel('Password'),
                     const SizedBox(height: 6),
                     TextField(
@@ -135,8 +124,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 14),
-
-                    // Forgot password
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -148,19 +135,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 6),
-
-                    // Tombol Sign in
                     primaryButton('Sign In Now', () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Sign In tapped')),
-                      );
+                      if (_email.text.isEmpty || _pass.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Email dan Password wajib diisi!'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      } else {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          DashboardScreen.route,
+                          (route) => false,
+                        );
+                      }
                     }),
                     const SizedBox(height: 14),
-
-                    // Tombol Create account
                     Center(
                       child: TextButton(
-                        onPressed: () => Navigator.pushNamed(
+                        onPressed: () => Navigator.pushReplacementNamed(
                           context,
                           SignupScreen.route,
                         ),
