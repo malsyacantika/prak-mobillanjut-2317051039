@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
-import 'dashboardScreen.dart';
+import 'dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route = '/login';

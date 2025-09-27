@@ -1,4 +1,4 @@
-imporgit 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
   static const String route = '/dashboard';
@@ -54,6 +54,7 @@ class DashboardScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   boxShadow: [
                     BoxShadow(
+                      // ignore: deprecated_member_use
                       color: Colors.blue.withOpacity(0.2),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
@@ -150,6 +151,7 @@ class DashboardScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(14.0),
         boxShadow: [
           BoxShadow(
+            // ignore: deprecated_member_use
             color: Colors.black.withOpacity(0.05),
             blurRadius: 6,
             offset: const Offset(0, 3),
