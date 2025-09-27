@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+imporgit 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
   static const String route = '/dashboard';

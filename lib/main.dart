@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/signup_screen.dart';
-import 'screens/dashboard_screen.dart';
+import 'screens/dashboardScreen.dart';
 
 void main() => runApp(const JustduitApp());
 
