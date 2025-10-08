@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
-import 'dashboard_screen.dart';
+import 'splash_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route = '/login';
@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  // Label teks dengan tanda bintang merah (untuk field wajib)
   Widget requiredLabel(String text) => Row(
         children: [
           Text(text, style: const TextStyle(fontSize: 13)),
@@ -29,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       );
 
+  // Tombol utama (custom button)
   Widget primaryButton(String label, VoidCallback onTap) => GestureDetector(
         onTap: onTap,
         child: Container(
@@ -66,18 +68,23 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(height: 18),
+
+              // Logo aplikasi
               Image.asset(
-                'assets/JustDuit.png',
+                'assets/images/JustDuit.png',
                 height: 80,
                 fit: BoxFit.contain,
               ),
+
               const SizedBox(height: 18),
+
+              // Teks sambutan
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Hi, Welcome Back to Justduit',
+                    'Hi, Welcome Back to JustDuit',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -85,7 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+
               const SizedBox(height: 14),
+
+              // Container utama form login
               Container(
                 width: 360,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -104,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Input Email
                     requiredLabel('Email Address'),
                     const SizedBox(height: 6),
                     TextField(
@@ -113,7 +124,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Enter your email',
                       ),
                     ),
+
                     const SizedBox(height: 14),
+
+                    // Input Password
                     requiredLabel('Password'),
                     const SizedBox(height: 6),
                     TextField(
@@ -123,7 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Enter your password',
                       ),
                     ),
+
                     const SizedBox(height: 14),
+
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -134,9 +150,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 6),
+
+                    // Tombol "Sign In Now"
                     primaryButton('Sign In Now', () {
                       if (_email.text.isEmpty || _pass.text.isEmpty) {
+                        // Validasi input kosong
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Email dan Password wajib diisi!'),
@@ -144,14 +164,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       } else {
-                        Navigator.pushNamedAndRemoveUntil(
+                        Navigator.pushReplacementNamed(
                           context,
-                          DashboardScreen.route,
-                          (route) => false,
+                          SplashScreen.route,
                         );
                       }
                     }),
+
                     const SizedBox(height: 14),
+
+                    // Tombol "Create New Account"
                     Center(
                       child: TextButton(
                         onPressed: () => Navigator.pushReplacementNamed(
