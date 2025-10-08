@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'dashboardScreen.dart';
+import 'dashboard_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   static const route = '/signup';

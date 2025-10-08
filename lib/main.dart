@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+import 'screens/dashboard_screen.dart';
 import 'screens/signup_screen.dart';
-import 'screens/dashboardScreen.dart';
+import 'screens/splash_screen.dart'; 
 
-void main() => runApp(const JustduitApp());
+void main() {
+  runApp(const MyApp());
+}
 
-class JustduitApp extends StatelessWidget {
-  const JustduitApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Justduit App",
-      theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: LoginScreen.route,
+      title: 'JustDuit App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+
+      // Atur halaman awal ke SplashScreen
+      initialRoute: SplashScreen.route,
+
       routes: {
-        '/': (context) => const LoginScreen(),
+        SplashScreen.route: (context) => const SplashScreen(),
         LoginScreen.route: (context) => const LoginScreen(),
-        SignupScreen.route: (context) => const SignupScreen(),
         DashboardScreen.route: (context) => const DashboardScreen(),
+        SignupScreen.route: (context) => const SignupScreen(),
       },
     );
   }
